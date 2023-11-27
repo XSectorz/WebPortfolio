@@ -116,8 +116,16 @@ export default function MainPage() {
                             {educationIndex === 1 ? '-' : '+'}
                         </button>
                     </div>
-                    <div className={`flex flex-row ${educationIndex===1 ? ' h-64 transition-all' : ' h-0 transition-all'} overflow-hidden duration-700`}>
-                        <EducationInfo position="Bangkok, Thailand" website="www.kmitl.ac.th" description="In my studies there, I worked on IOT projects such as FPGA, STM32 and Arduino, Website projects such as product auction websites, sales websites, as well as developing games using SFML, Godot Engine."
+                    <div className={`flex flex-row ${educationIndex===1 ? ' h-72 transition-all' : ' h-0 transition-all'} overflow-hidden duration-700`}>
+                        <EducationInfo position="Bangkok, Thailand" website="www.kmitl.ac.th" description={
+                                <>
+                                In my studies there, I worked on IOT projects such as FPGA, STM32, and
+                                Arduino. Website projects included product auction websites, sales
+                                websites, as well as developing games using SFML, <br />Godot Engine.
+                                <br />
+                                <strong>GPAX 4.00</strong>
+                              </>
+                        }
                         information="Computer Engineering" imgPath="/img/logokmitl.png" imgAlt="kmitlimg"/>
                     </div>
                 </div>
@@ -129,7 +137,7 @@ export default function MainPage() {
                                 High School @ Singburi School  
                             </div>
                             <div className='flex ml-52 text-white text-lg font-sans font-bold'>
-                                2018-2021 
+                                2018 - 2021 
                             </div>
                         </div>
                         <button className='flex text-white items-center font-sans text-2xl mr-6 '>
@@ -152,11 +160,35 @@ export default function MainPage() {
                             bla bla bla... bla bla bla... bla bla bla... bla bla bla... bla bla bla... bla bla bla... bla bla bla... bla bla bla...
                             bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...
                             bla bla bla...bla bla bla...
-                            bla bla bla...bla bla bla...bla bla bla...
+                            bla bla bla...bla bla bla...bla bla bla... ปิ่นจัง
                         </div>
                     </div>
-                    <div className='flex w-2/6 text-white items-center justify-start mr-28'>
-                        <img className='h-[600px] w-[500px]' src="/img/gibiseeproject.png" alt="gibi"></img>
+                    <div className='flex w-2/6 h-[450px] text-white items-center justify-start mr-28 overflow-hidden'>
+                        <img className='w-[500px]' src="/img/gibiseeproject.png" alt="gibi"></img>
+                    </div>
+                </div>
+                <div className='flex flex-row mt-10'>
+                    <div className='flex text-gray-500 font-sans font-bold text-base ml-[350px]'>
+                        Filter by
+                    </div>
+                    <div className='relative flex text-[#CE1212] font-sans font-bold text-base ml-4'>
+                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>10</div>
+                        All
+                    </div>
+                    <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
+                    <div className='relative flex text-gray-500 font-sans font-bold text-base ml-4'>
+                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>02</div>
+                        Game Development
+                    </div>
+                    <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
+                    <div className='relative flex text-gray-500 font-sans font-bold text-base ml-4'>
+                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>02</div>
+                        Web Development
+                    </div>
+                    <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
+                    <div className='relative flex text-gray-500 font-sans font-bold text-base ml-4'>
+                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>02</div>
+                        App Development
                     </div>
                 </div>
             </div>
