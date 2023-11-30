@@ -1,10 +1,16 @@
 import React, {useState} from 'react';
 import EducationInfo from '../components/educationList';
+import ProjectCard from '../components/projectCard';
+import data from '../data/projectListData';
+
+import { FaChevronLeft,FaChevronRight } from "react-icons/fa";
 
 export default function MainPage() {
 
     const [hoverIndex,setHoverIndex] = useState(0);
+    const [currentShowProjIndex,setCurrentShowProjIndex] = useState(0);
     const [educationIndex,setEducationIndex] = useState(1);
+    const [projectTranslateXValue,setProjectTranslateXValue] = useState(0);
 
     const hoverMenu = (index) => {
         setHoverIndex(index);
@@ -12,12 +18,34 @@ export default function MainPage() {
 
     const changeEducation = (index) => {
 
+
         if(educationIndex === index) {
             setEducationIndex(0);
         } else {
             setEducationIndex(index);
         }
     }
+
+    const handlePrevClick = () => {
+        
+        if(currentShowProjIndex > 0) {
+            setProjectTranslateXValue((projectTranslateXValue) => projectTranslateXValue + 100);
+            setCurrentShowProjIndex(currentShowProjIndex-1);
+        }
+      };
+    
+      const handleNextClick = () => {
+        if(currentShowProjIndex+4 < data.length){
+            setProjectTranslateXValue((projectTranslateXValue) => projectTranslateXValue - 100);
+            setCurrentShowProjIndex(currentShowProjIndex+1);
+        }
+      };
+
+    const projects = Array.from({ length: data.length }).map((_, index) => ({
+        projectName: data[index].projectName,
+        imgPath: data[index].imgPath,
+        projectType: data[index].projectType,
+    }));
 
     return(
         <div className='flex flex-col bg-black h-full'>
@@ -123,7 +151,7 @@ export default function MainPage() {
                                 Arduino. Website projects included product auction websites, sales
                                 websites, as well as developing games using SFML, <br />Godot Engine.
                                 <br />
-                                <strong>GPAX 4.00</strong>
+                                <strong>GPA 3.41</strong>
                               </>
                         }
                         information="Computer Engineering" imgPath="/img/logokmitl.png" imgAlt="kmitlimg"/>
@@ -189,6 +217,34 @@ export default function MainPage() {
                     <div className='relative flex text-gray-500 font-sans font-bold text-base ml-4'>
                         <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>02</div>
                         App Development
+                    </div>
+                </div>
+            </div>
+            <div className='flex h-[500px] w-full justify-center mt-5'>
+                <div className='flex h-[400px] w-[1200px] bg-black relative p-5'>
+                    
+                    {/* Arrow */}
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 left-5 text-3xl p-2 text-white'
+                    style={{ zIndex: 2 }} onClick={() => handlePrevClick()}>
+                        <FaChevronLeft />
+                    </button>
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 right-5 text-3xl p-2 text-white'
+                    style={{ zIndex: 2 }} onClick={() => handleNextClick()}>
+                        <FaChevronRight />
+                    </button>
+                    <div className={`flex w-full h-full bg-black py-5 overflow-hidden pl-5 ${data.length < 4 ? 'justify-center' : 'justify-start'}`} style={{ zIndex: 1 }}>
+                        {data.map((project, index) => (
+                            <div
+                            key={index}
+                            className='project-card'
+                            style={{
+                                transition: 'transform 0.3s ease-in-out',
+                                transform: `translateX(${projectTranslateXValue}%)`
+                            }}
+                            >
+                            <ProjectCard {...project} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
