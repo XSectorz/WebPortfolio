@@ -13,7 +13,7 @@ const ProjectCard = ({projectName,imgPath,projectType }) => {
     };
 
     return(
-    <div class="rounded-lg shadow mx-5"
+    <div class={`rounded-lg shadow mx-5 ${isHovered ? 'cursor-pointer' : 'cursor-default'}`}
     onMouseEnter={handleMouseEnter}
     onMouseLeave={handleMouseLeave}>
         <div className='flex h-[160px] w-60 overflow-hidden'>

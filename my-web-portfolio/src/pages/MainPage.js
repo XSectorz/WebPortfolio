@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import EducationInfo from '../components/educationList';
 import ProjectCard from '../components/projectCard';
 import data from '../data/projectListData';
@@ -8,9 +8,12 @@ import { FaChevronLeft,FaChevronRight } from "react-icons/fa";
 export default function MainPage() {
 
     const [hoverIndex,setHoverIndex] = useState(0);
+    const [projectFilter,setprojectFilter] = useState("All");
     const [currentShowProjIndex,setCurrentShowProjIndex] = useState(0);
     const [educationIndex,setEducationIndex] = useState(1);
     const [projectTranslateXValue,setProjectTranslateXValue] = useState(0);
+    const [filteredProjects, setFilteredProjects] = useState([]);
+    const [filteredProjectsSize, setFilteredProjectsSize] = useState([]);
 
     const hoverMenu = (index) => {
         setHoverIndex(index);
@@ -18,12 +21,66 @@ export default function MainPage() {
 
     const changeEducation = (index) => {
 
-
         if(educationIndex === index) {
             setEducationIndex(0);
         } else {
             setEducationIndex(index);
         }
+    }
+
+    useEffect(() => {
+        const initialProjects = data.map(({ projectName, imgPath, projectType }) => ({
+            projectName,
+            imgPath,
+            projectType,
+        }));
+
+        const sizeByProjectType = projects.reduce((acc, project) => {
+            const type = project.projectType;
+    
+            if (!acc[type]) {
+                acc[type] = 1;
+            } else {
+                acc[type]++;
+            }
+    
+            return acc;
+
+        }, {});
+        setFilteredProjectsSize(sizeByProjectType);
+        setFilteredProjects(initialProjects);
+        setprojectFilter("All");
+    }, []);
+
+    const clickChangeProjectFilter = (type) => {
+        setprojectFilter(type);
+        
+        let filteredProjects;
+
+        if(type === 'All') {
+            filteredProjects = projects;
+        } else {
+            filteredProjects = data.filter(item => item.projectType === type).map(({ projectName, imgPath, projectType }) => ({
+                projectName,
+                imgPath,
+                projectType,
+            }));
+        }
+
+        setCurrentShowProjIndex(0);
+        setProjectTranslateXValue(0);
+        setFilteredProjects(filteredProjects);
+
+    }
+    
+    const returnNumberFormat = (num) => {
+
+        if(num < 10) {
+            return '0' + num;
+        } else {
+            return num;
+        }
+
     }
 
     const handlePrevClick = () => {
@@ -35,7 +92,7 @@ export default function MainPage() {
       };
     
       const handleNextClick = () => {
-        if(currentShowProjIndex+4 < data.length){
+        if(currentShowProjIndex+4 < filteredProjects.length){
             setProjectTranslateXValue((projectTranslateXValue) => projectTranslateXValue - 100);
             setCurrentShowProjIndex(currentShowProjIndex+1);
         }
@@ -199,28 +256,32 @@ export default function MainPage() {
                     <div className='flex text-gray-500 font-sans font-bold text-base ml-[350px]'>
                         Filter by
                     </div>
-                    <div className='relative flex text-[#CE1212] font-sans font-bold text-base ml-4'>
-                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>10</div>
+                    <div className={`relative flex font-sans font-bold text-base ml-4 ${[projectFilter !== 'All' ? 'cursor-pointer text-gray-500' : 'cursor-default text-[#CE1212]']}`} 
+                    onClick={() => clickChangeProjectFilter("All")}>
+                        <div className={`absolute top-[-8px] right-[-12px] font-sans font text-xs`}>{returnNumberFormat(projects.length)}</div>
                         All
                     </div>
                     <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
-                    <div className='relative flex text-gray-500 font-sans font-bold text-base ml-4'>
-                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>02</div>
+                    <div className={`relative flex font-sans font-bold text-base ml-4 ${[projectFilter !== 'Game Development' ? 'cursor-pointer text-gray-500' : 'cursor-default text-[#CE1212]']}`}
+                    onClick={() => clickChangeProjectFilter("Game Development")}>
+                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["Game Development"])}</div>
                         Game Development
                     </div>
                     <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
-                    <div className='relative flex text-gray-500 font-sans font-bold text-base ml-4'>
-                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>02</div>
+                    <div className={`relative flex font-sans font-bold text-base ml-4 ${[projectFilter !== "Web Development" ? 'cursor-pointer text-gray-500' : 'cursor-default text-[#CE1212]']}`}
+                    onClick={() => clickChangeProjectFilter("Web Development")}>
+                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["Web Development"])}</div>
                         Web Development
                     </div>
                     <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
-                    <div className='relative flex text-gray-500 font-sans font-bold text-base ml-4'>
-                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>02</div>
+                    <div className={`relative flexfont-sans font-bold text-base ml-4 ${[projectFilter !== "App Development" ? 'cursor-pointer text-gray-500' : 'cursor-default text-[#CE1212]']}`}
+                    onClick={() => clickChangeProjectFilter("App Development")}>
+                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["App Development"])}</div>
                         App Development
                     </div>
                 </div>
             </div>
-            <div className='flex h-[500px] w-full justify-center mt-5'>
+            <div className='flex h-[450px] w-full justify-center mt-5'>
                 <div className='flex h-[400px] w-[1200px] bg-black relative p-5'>
                     
                     {/* Arrow */}
@@ -232,8 +293,8 @@ export default function MainPage() {
                     style={{ zIndex: 2 }} onClick={() => handleNextClick()}>
                         <FaChevronRight />
                     </button>
-                    <div className={`flex w-full h-full bg-black py-5 overflow-hidden pl-5 ${data.length < 4 ? 'justify-center' : 'justify-start'}`} style={{ zIndex: 1 }}>
-                        {data.map((project, index) => (
+                    <div className={`flex w-full h-full bg-black py-5 overflow-hidden pl-5 ${filteredProjects.length < 4 ? 'justify-center' : 'justify-start'}`} style={{ zIndex: 1 }}>
+                        {filteredProjects.map((project, index) => (
                             <div
                             key={index}
                             className='project-card'
@@ -242,9 +303,22 @@ export default function MainPage() {
                                 transform: `translateX(${projectTranslateXValue}%)`
                             }}
                             >
-                            <ProjectCard {...project} />
+                            <ProjectCard key={project.projectName} {...project} />
                             </div>
                         ))}
+                    </div>
+                </div>
+            </div>
+            <div className='flex flex-col h-[500px] w-full'>
+                <div className='flex justify-center items-center text-white text-6xl font-sans font-bold'>
+                    Experience
+                </div> 
+                <div className='flex flex-row'>
+                    <div className='flex'>
+
+                    </div>
+                    <div className='flex'>
+
                     </div>
                 </div>
             </div>
