@@ -1,0 +1,21 @@
+
+@keyframes bouncev2 {
+    0%, 100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8,0,1,1);
+    }
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0,0,0.2,1);
+    }
+  }
+  
+  .animate-bounce-on-hover-v2 {
+    transition: transform 0.3s ease-out; 
+  }
+  
+  .animate-bounce-on-hover-v2:hover {
+    animation: bouncev2 1s infinite;
+    transform: translateY(-25%);
+  }
+  

@@ -3,8 +3,13 @@ import EducationInfo from '../components/educationList';
 import ProjectCard from '../components/projectCard';
 import data from '../data/projectListData';
 import { FaLaptopCode } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
+import { IoIosMail,IoLogoLinkedin   } from "react-icons/io";
+import { MdOutlineKeyboardDoubleArrowUp  } from "react-icons/md";
+import { FaFacebookF } from "react-icons/fa6";
 
 import { FaChevronLeft,FaChevronRight } from "react-icons/fa";
+import '../css/animation.css'
 
 export default function MainPage() {
 
@@ -442,8 +447,74 @@ export default function MainPage() {
                     </div>
                 </div>
             </div>
-            <div className='flex h-96 bg-black'>
-
+            <div className='flex flex-col h-full bg-black pt-20 justify-center items-center'>
+                <div className='flex flex-col w-[550px]'>
+                    <div className='flex text-white text-6xl justify-center font-sans font-bold w-full'>
+                            Contact Me
+                    </div>
+                    <div className='flex items-center pt-10 font-sans text-lg font-semibold text-gray-400'>
+                        Have a question or want to work together?<br/> Leave your details and I'll get back to you as soon as possible.
+                    </div>
+                    <div className='flex flex-col pt-10'>
+                        <input
+                            className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
+                            type="text"
+                            placeholder="Name"
+                        />     
+                    </div>
+                    <div className='flex pt-2'>
+                        <input
+                            className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
+                            type="text"
+                            placeholder="Email"
+                        />     
+                    </div>
+                    <div className='flex pt-2'>
+                        <textarea
+                            className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
+                            type="text"
+                            placeholder="Message"
+                            style={{
+                                maxHeight: '140px', 
+                                overflowY: 'auto',
+                                resize: 'none',
+                              }}
+                        />     
+                    </div>
+                    <div className='flex flex-row justify-between pt-2 text-white'>
+                            <div className='flex'>
+                              
+                            </div>
+                            <div className='flex font-sans text-lg font-bold border-b-4 border-[#ff4d5a] text-white hover:border-white items-center justify-center w-20 hover:text-[#ff4d5a] cursor-pointer hover:duration-300 duration-300'>
+                              SUBMIT
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div className=' relative flex flex-col h-40 bg-[#282828] mt-20 justify-center items-center w-full'>    
+                <div className=' absolute flex text-white text-4xl top-[-20px] bg-[#ff4d5a] animate-bounce-on-hover-v2 cursor-pointer'>
+                    <MdOutlineKeyboardDoubleArrowUp />
+                </div>
+                <div className='flex flex-row justify-center items-center text-4xl text-white'>
+                    <div className='flex px-1'>
+                        <div className='flex transition-transform transform hover:scale-125 duration-500 scale-100 cursor-pointer'>
+                            <FaGithub />
+                        </div>
+                    </div>
+                    <div className='flex px-1'>
+                        <div className='flex transition-transform transform hover:scale-125 duration-500 scale-100 cursor-pointer text-[#282828] bg-white rounded-2xl'>
+                            <IoIosMail />
+                        </div>
+                    </div>
+                    <div className='flex px-1'>
+                        <div className='flex transition-transform transform hover:scale-125 duration-500 scale-100 cursor-pointer text-[#282828] bg-white rounded-2xl'>
+                            <IoLogoLinkedin />
+                        </div>
+                    </div>
+                </div>
+                <div className=' absolute flex items-center justify-center bottom-5 text-white font-sans text-sm'>
+                    PANAT KATHINTHONG ©2023
+                </div>
             </div>
         </div>
     );
