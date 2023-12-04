@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import EducationInfo from '../components/educationList';
 import ProjectCard from '../components/projectCard';
 import data from '../data/projectListData';
+import { FaLaptopCode } from "react-icons/fa";
 
 import { FaChevronLeft,FaChevronRight } from "react-icons/fa";
 
@@ -12,6 +13,7 @@ export default function MainPage() {
     const [currentShowProjIndex,setCurrentShowProjIndex] = useState(0);
     const [educationIndex,setEducationIndex] = useState(1);
     const [projectTranslateXValue,setProjectTranslateXValue] = useState(0);
+    const [isHoverSiamcraft,setIsHoverSiamcraft] = useState(false);
     const [filteredProjects, setFilteredProjects] = useState([]);
     const [filteredProjectsSize, setFilteredProjectsSize] = useState([]);
 
@@ -309,18 +311,139 @@ export default function MainPage() {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col h-[500px] w-full'>
+            <div className='flex flex-col h-full w-full mt-10 bg-black'>
                 <div className='flex justify-center items-center text-white text-6xl font-sans font-bold'>
                     Experience
                 </div> 
-                <div className='flex flex-row'>
-                    <div className='flex'>
 
-                    </div>
-                    <div className='flex'>
-
+                <div className='flex flex-col items-center h-[380px] justify-center mt-10'
+                  style={{
+                    backgroundImage: 'url(/img/experience_bg.png)', 
+                    backgroundSize: 'cover', 
+                    backgroundPosition: 'center',
+                }}> 
+                    <div class="w-full h-[450px] flex flex-col justify-center items-center backdrop-blur-lg cursor-pointer"
+                    onMouseEnter={() => setIsHoverSiamcraft(true)}
+                    onMouseLeave={() => setIsHoverSiamcraft(false)}>
+                        <div className={`flex flex-row text-2xl font-sans tracking-wider font-bold mt-4 ${!isHoverSiamcraft ? 'text-white' : 'text-[#FF0000]'}`}>
+                            <div className='flex items-center'>
+                                I AM 
+                            </div>
+                            <div className={`flex font-bold px-2 text-4xl items-end ${!isHoverSiamcraft ? 'text-[#FF0000]' : 'text-white'}`}>DEVELOPER</div>
+                            <div className='flex items-center'>
+                                AT    
+                            </div> 
+                        </div>
+                        <div className={`flex text-8xl font-sans font-bold tracking-widest ${isHoverSiamcraft ? ' text-white transition-transform transform scale-110 duration-500' : 'text-[#FF0000] transition-transform transform scale-100 duration-500'} cursor-pointer`}>
+                            SIAMCRAFT.NET
+                        </div>
+                        <div className={`flex flex-row text-2xl font-sans tracking-wider mt-4 font-bold ${!isHoverSiamcraft ? 'text-white' : 'text-[#FF0000]'}`}>
+                            <div className='flex items-center'>
+                                MORE THAN
+                            </div>
+                            <div className={`flex font-bold px-2 text-4xl items-end ${!isHoverSiamcraft ? 'text-[#FF0000]' : 'text-white'}`}>2</div>
+                            <div className='flex items-center'>
+                                YEARS   
+                            </div> 
+                        </div>
                     </div>
                 </div>
+                <div className='flex flex-row bg-black  h-[600px]'>
+                    <div className='flex flex-col w-1/2 h-full pl-32 justify-center'>
+                        <div className='flex flex-row text-white font-sans font-bold text-3xl'>
+                            <div className='flex items-center pt-1 text-[#FF0000]'>
+                                <FaLaptopCode />
+                            </div>
+                            <div className='flex items-center pl-2'>
+                                What's I Do?
+                            </div>
+                        </div>
+                        <div className='flex flex-col text-gray-400 font-sans font-bold text-lg mt-5'>
+                            <div className='flex'>
+                                I am the developer of most of the server systems in siamcraft<br/> to provide a good experience for more than 200 players.
+                                <br/><br/>
+                                Recently I have implemented an implementation of Jedis (Redis)<br/> to allow the game server to support more players.<br/> This is one of my achievements that I am very proud of.
+                                <br/><br/>
+                                The system that I have created is There are so many project names that start with XS
+                                <br/> 
+                            </div>
+                            <div className='flex flex-row'>
+                                <div className='flex'>
+                                    which is my alias, such as 
+                                </div>
+                                <div className=' pl-2 flex hover:text-[#FF0000] text-white italic cursor-pointer'>
+                                    XSEvent
+                                </div>
+                                <div className='flex'>
+                                    ,
+                                </div>
+                                <div className=' pl-2 flex hover:text-[#FF0000] text-white italic cursor-pointer'>
+                                    XSCasino
+                                </div>
+                                <div className='flex'>
+                                    ,
+                                </div>
+                                <div className=' pl-2 flex hover:text-[#FF0000] text-white italic cursor-pointer'>
+                                    XShop
+                                </div>
+                                <div className='flex pl-2'>
+                                    and
+                                </div>
+                                <div className=' pl-2 flex hover:text-[#FF0000] text-white italic cursor-pointer'>
+                                    more...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='flex w-1/2 h-full p-5'>
+                        <div className='flex flex-col w-full h-full'>
+                            <div className='flex flex-row h-[400px] w-full'>
+                                <div className='flex h-full w-4/6 rounded-lg mx-2 my-2' style={{
+                                    backgroundImage: 'url(/img/siam_2.jpg)', 
+                                    backgroundSize: 'cover', 
+                                    backgroundPosition: 'center',
+                                }}/>
+                                <div className='flex flex-col h-full w-1/2'>
+                                    <div className='flex h-1/2 w-full bg-cyan-500 rounded-lg mx-2 mt-6'
+                                    style={{
+                                        backgroundImage: 'url(/img/siam_3.jpg)', 
+                                        backgroundSize: 'cover', 
+                                        backgroundPosition: 'center',
+                                    }}/>
+                                    <div className='flex h-1/2 w-full bg-indigo-800 rounded-lg mx-2 mt-6'
+                                    style={{
+                                        backgroundImage: 'url(/img/siam_7.jpg)', 
+                                        backgroundSize: 'cover', 
+                                        backgroundPosition: 'center',
+                                    }}/>
+                                </div>
+                            </div>
+                            <div className='flex flex-row h-[200px] w-full'>
+                                <div className='flex h-full w-1/4 bg-indigo-800 rounded-lg mt-6 mx-2'
+                                 style={{
+                                    backgroundImage: 'url(/img/siam_4.jpg)', 
+                                    backgroundSize: 'cover', 
+                                    backgroundPosition: 'center',
+                                }}/>
+                                <div className='flex h-full w-1/2 bg-purple-400 rounded-lg mx-2 mt-6'
+                                style={{
+                                    backgroundImage: 'url(/img/siam_5.jpg)', 
+                                    backgroundSize: 'cover', 
+                                    backgroundPosition: 'center',
+                                }}/>
+                                <div className='flex h-full w-1/2 bg-orange-700 rounded-lg mx-2 mt-6'
+                                style={{
+                                    backgroundImage: 'url(/img/siam_6.jpg)', 
+                                    backgroundSize: 'cover', 
+                                    backgroundPosition: 'center',
+                                }}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className='flex h-96 bg-black'>
+
             </div>
         </div>
     );
