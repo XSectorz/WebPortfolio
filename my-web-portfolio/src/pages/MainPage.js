@@ -108,7 +108,7 @@ export default function MainPage() {
 
     return(
         <div className='flex flex-col bg-black h-full'>
-            <div className='flex bg-[#272727] w-full fixed' style={{ zIndex: 2 }}>
+            <div className='flex bg-[#272727] w-full fixed items-center justify-center' style={{ zIndex: 2 }}>
                 <NavBar/> 
             </div>
             <div id='home'>
