@@ -261,7 +261,7 @@ export default function MainPage() {
                                 transform: `translateX(${projectTranslateXValue}%)`
                             }}
                             >
-                            <ProjectCard key={project.projectName} {...project} />
+                            <ProjectCard key={project.projectName} {...project} project={project} />
                             </div>
                         ))}
                     </div>
