@@ -22,9 +22,28 @@ export default function ProjectDetails() {
             <div className='flex bg-[#272727] w-full fixed items-center justify-center' style={{ zIndex: 2 }}>
                 <NavBar/> 
             </div>
-            <div className="flex mt-20 w-full justify-start">
-                <div className="flex text-white text-2xl w-full">
-                    {projectName}
+            <div className="flex flex-col ml-36 mt-36 w-full justify-start">
+                <div className="flex flex-row text-[#c5c5b6]">
+                    <div className="flex text-md font-sans font-bold">
+                        Home
+                    </div>
+                    <div className="flex text-md font-sans font-bold px-2">
+                        &gt;
+                    </div>
+                    <div className="flex text-md font-sans font-bold">
+                        Projects
+                    </div>
+                    <div className="flex text-md font-sans font-bold px-2">
+                        &gt;
+                    </div>
+                    <div className="flex text-md font-sans font-bold">
+                        {projectName}
+                    </div>
+                </div>
+                <div className="flex mt-10">
+                    <div className="flex text-white text-6xl w-full font-sans font-bold">
+                        {projectName}
+                    </div>
                 </div>
             </div>
         </div>
