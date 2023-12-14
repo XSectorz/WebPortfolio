@@ -31,10 +31,11 @@ export default function MainPage() {
     }
 
     useEffect(() => {
-        const initialProjects = data.map(({ projectName, imgPath, projectType }) => ({
+        const initialProjects = data.map(({ projectName, imgPath, projectType, projectTags }) => ({
             projectName,
             imgPath,
             projectType,
+            projectTags
         }));
 
         const sizeByProjectType = projects.reduce((acc, project) => {
@@ -62,10 +63,11 @@ export default function MainPage() {
         if(type === 'All') {
             filteredProjects = projects;
         } else {
-            filteredProjects = data.filter(item => item.projectType === type).map(({ projectName, imgPath, projectType }) => ({
+            filteredProjects = data.filter(item => item.projectType === type).map(({ projectName, imgPath, projectType,projectTags }) => ({
                 projectName,
                 imgPath,
                 projectType,
+                projectTags,
             }));
         }
 
@@ -104,6 +106,7 @@ export default function MainPage() {
         projectName: data[index].projectName,
         imgPath: data[index].imgPath,
         projectType: data[index].projectType,
+        projectTags: data[index].projectTags,
     }));
 
     return(

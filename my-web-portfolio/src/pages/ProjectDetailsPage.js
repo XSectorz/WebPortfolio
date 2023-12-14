@@ -1,4 +1,4 @@
-import React, {useEffect } from "react";
+import React, {useEffect,useState } from "react";
 import { useNavigate,useLocation } from 'react-router-dom';
 import NavBar from "../components/navbar";
 import data from "../data/projectListData";
@@ -7,6 +7,7 @@ export default function ProjectDetails() {
     const navigate = useNavigate();
     
     const location = useLocation();
+    const [dataTags,setDataTags] = useState([]);
 
     const dataPass = location.state;
 
@@ -14,10 +15,15 @@ export default function ProjectDetails() {
 
         /*console.log("Loc " ,location);
         console.log("Proj ", dataPass.project.projectName);*/
+        console.log("Loc " ,location);
         const isProjectValid = data.some(projects => projects.projectName === dataPass.project.projectName);
 
         if (!isProjectValid) {
             navigate('/PageNotFound');
+        } else {
+            dataPass.project.projectTags.split(',').forEach(element => {
+                console.log(element);
+            });
         }
           
     },[navigate]);
