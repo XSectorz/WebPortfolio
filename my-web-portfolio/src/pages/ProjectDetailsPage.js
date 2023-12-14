@@ -1,14 +1,15 @@
 import React, {useEffect,useState } from "react";
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate,useLocation,useParams } from 'react-router-dom';
 import NavBar from "../components/navbar";
 import data from "../data/projectListData";
+import TypeItems from "../components/typeItems";
 
 export default function ProjectDetails() {
     const navigate = useNavigate();
     
     const location = useLocation();
     const [dataTags,setDataTags] = useState([]);
-
+    const { projectName } = useParams();
     const dataPass = location.state;
 
     useEffect(() => {
@@ -16,17 +17,22 @@ export default function ProjectDetails() {
         /*console.log("Loc " ,location);
         console.log("Proj ", dataPass.project.projectName);*/
         console.log("Loc " ,location);
-        const isProjectValid = data.some(projects => projects.projectName === dataPass.project.projectName);
+        console.log("ProjName ", projectName);
+        const isProjectValid = data.some(projects => projects.projectName === projectName);
 
         if (!isProjectValid) {
             navigate('/PageNotFound');
         } else {
-            dataPass.project.projectTags.split(',').forEach(element => {
+            /*dataPass.project.projectTags.split(',').forEach(element => {
                 console.log(element);
-            });
+            });*/
+            setDataTags(dataPass.project.projectTags.split(','));
         }
           
-    },[navigate]);
+    },[projectName]);
+    /*console.log(dataPass.project.projectTags);
+    console.log(dataPass.project.projectTags.split(','));
+    console.log(dataTags);*/
 
     return( 
         <div className='flex flex-col bg-black h-full'>
@@ -48,15 +54,22 @@ export default function ProjectDetails() {
                         &gt;
                     </div>
                     <div className="flex text-md font-sans font-bold">
-                        {dataPass.project.projectName}
+                        {projectName}
                     </div>
                 </div>
                 <div className="flex mt-10">
                     <div className="flex text-white text-6xl font-sans font-bold">
-                        {dataPass.project.projectName}
+                        {projectName}
                     </div>
                 </div>
-                <div className="flex flex-row mt-8 h-full w-full">
+                <div className="flex flex-row mt-4 w-full h-full">
+                    {
+                        dataTags.map((item,index) =>(
+                            <TypeItems key={index} projectTypes={item}/>
+                        ))
+                    }
+                </div>
+                <div className="flex flex-row mt-12 h-full w-full">
                     <div className='flex h-full w-1/3 items-start'>
                         <div className='flex h-[450px] w-[600px] rounded-lg mx-2'
                             style={{
