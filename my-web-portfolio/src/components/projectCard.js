@@ -14,7 +14,7 @@ const ProjectCard = ({project}) => {
     };
     
     return(
-        <Link to={{ pathname: `/projects/${project.projectName}` }} state={{ project: project}}>
+        <Link to={{ pathname: `/projects/${project.projectName}` }}>
 
             <div class={`rounded-lg shadow mx-5 ${isHovered ? 'cursor-pointer' : 'cursor-default'}`}
                 onMouseEnter={handleMouseEnter}

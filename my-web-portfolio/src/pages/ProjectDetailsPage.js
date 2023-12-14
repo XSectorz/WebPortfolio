@@ -10,7 +10,6 @@ export default function ProjectDetails() {
     const location = useLocation();
     const [dataTags,setDataTags] = useState([]);
     const { projectName } = useParams();
-    const dataPass = location.state;
 
     useEffect(() => {
 
@@ -26,7 +25,9 @@ export default function ProjectDetails() {
             /*dataPass.project.projectTags.split(',').forEach(element => {
                 console.log(element);
             });*/
-            setDataTags(dataPass.project.projectTags.split(','));
+            const matchingProject = data.find(project => project.projectName === projectName);
+            setDataTags(matchingProject.projectTags.split(','));
+            
         }
           
     },[projectName]);
@@ -71,7 +72,7 @@ export default function ProjectDetails() {
                 </div>
                 <div className="flex flex-row mt-12 h-full w-full">
                     <div className='flex h-full w-1/3 items-start'>
-                        <div className='flex h-[450px] w-[600px] rounded-lg mx-2'
+                        <div className='flex h-[450px] w-[600px] rounded-3xl mx-2'
                             style={{
                             backgroundImage: 'url(/img/siam_6.jpg)', 
                             backgroundSize: 'cover', 
