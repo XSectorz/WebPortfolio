@@ -7,12 +7,14 @@ import { MdOutlineKeyboardDoubleArrowUp  } from "react-icons/md";
 import NavBar from '../components/navbar';
 import BottomNavBar from '../components/bottomNavBar';
 import {Link as ScrollLink} from 'react-scroll';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 import { FaChevronLeft,FaChevronRight } from "react-icons/fa";
-import '../css/animation.css'
+import '../css/animation.css';
+import '../css/swalcustom.css';
 
 export default function MainPage() {
-
     const [projectFilter,setprojectFilter] = useState("All");
     const [currentShowProjIndex,setCurrentShowProjIndex] = useState(0);
     const [educationIndex,setEducationIndex] = useState(1);
@@ -21,6 +23,10 @@ export default function MainPage() {
     const [filteredProjects, setFilteredProjects] = useState([]);
     const [filteredProjectsSize, setFilteredProjectsSize] = useState([]);
 
+    const [name,setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+ 
     const changeEducation = (index) => {
 
         if(educationIndex === index) {
@@ -29,6 +35,66 @@ export default function MainPage() {
             setEducationIndex(index);
         }
     }
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        const data = {
+            from_name: name,
+            to_name: email,
+            message: message,
+        };
+
+        if(!name || !email || !message) {
+            Swal.fire({
+                title: 'Oops...',
+                html: '<span style="color: #ffffff;">Please fill in all fields.</span>',
+                icon: 'error',
+                confirmButtonText: 'Done',
+                background: '#252525',
+                customClass: {
+                    title: 'swal-error-title',
+                }
+              })
+        } else {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(emailRegex.test(email)) {
+                emailjs.send('service_x45s4x5', 'template_mglnb7e', data, 'Z_ondRf4Ug79uXCkl')
+                .then((result) => {
+                    console.log(result.text);
+                      Swal.fire({
+                          title: 'Success',
+                          html: '<span style="color: #ffffff;">Thank you. I will contact you back as soon as possible</span>',
+                          icon: 'success',
+                          confirmButtonText: 'Ok',
+                          background: '#252525',
+                          customClass: {
+                              title: 'swal-error-title',
+                          }
+                        })
+                }, (error) => {
+                  Swal.fire({
+                      title: 'Oops...',
+                      text: 'There was a problem sending Please contact me directly via email',
+                      icon: 'error',
+                      confirmButtonText: 'Done',
+                      background: 'red',
+                    })
+                });
+            } else {
+                Swal.fire({
+                    title: 'Oops...',
+                    html: '<span style="color: #ffffff;">Invailid email address</span>',
+                    icon: 'error',
+                    confirmButtonText: 'Done',
+                    background: '#252525',
+                    customClass: {
+                        title: 'swal-error-title',
+                    }
+                  })
+            }
+        }
+      };
 
     useEffect(() => {
         const initialProjects = [...data];
@@ -407,6 +473,7 @@ export default function MainPage() {
                             className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
                             type="text"
                             placeholder="Name"
+                            onChange={(e) => setName(e.target.value)}
                         />     
                     </div>
                     <div className='flex pt-2'>
@@ -414,6 +481,7 @@ export default function MainPage() {
                             className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
                             type="text"
                             placeholder="Email"
+                            onChange={(e) => setEmail(e.target.value)}
                         />     
                     </div>
                     <div className='flex pt-2'>
@@ -426,13 +494,15 @@ export default function MainPage() {
                                 overflowY: 'auto',
                                 resize: 'none',
                               }}
+                              onChange={(e) => setMessage(e.target.value)}
                         />     
                     </div>
                     <div className='flex flex-row justify-between pt-2 text-white'>
                             <div className='flex'>
                               
                             </div>
-                            <div className='flex font-sans text-lg font-bold border-b-4 border-[#ff4d5a] text-white hover:border-white items-center justify-center w-20 hover:text-[#ff4d5a] cursor-pointer hover:duration-300 duration-300'>
+                            <div className='flex font-sans text-lg font-bold border-b-4 border-[#ff4d5a] text-white hover:border-white items-center justify-center w-20 hover:text-[#ff4d5a] cursor-pointer hover:duration-300 duration-300'
+                            onClick={sendEmail}>
                               SUBMIT
                             </div>
                     </div>

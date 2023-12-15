@@ -22,6 +22,8 @@ export default function ProjectDetails() {
         console.log("Proj ", dataPass.project.projectName);*/
         // console.log("Loc " ,location);
         // console.log("ProjName ", projectName);
+        window.scrollTo(0, 0);
+        
         if (!isValid) {
             navigate('/PageNotFound');
         } else {
