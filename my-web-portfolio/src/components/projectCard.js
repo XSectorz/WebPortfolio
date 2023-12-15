@@ -16,7 +16,7 @@ const ProjectCard = ({project}) => {
     return(
         <Link to={{ pathname: `/projects/${project.projectName}` }}>
 
-            <div class={`rounded-lg shadow mx-5 ${isHovered ? 'cursor-pointer' : 'cursor-default'}`}
+            <div className={`rounded-lg shadow mx-5 ${isHovered ? 'cursor-pointer' : 'cursor-default'}`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}>
                 <div className='flex h-[160px] w-60 overflow-hidden'>

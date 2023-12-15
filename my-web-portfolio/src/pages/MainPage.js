@@ -31,12 +31,7 @@ export default function MainPage() {
     }
 
     useEffect(() => {
-        const initialProjects = data.map(({ projectName, imgPath, projectType, projectTags }) => ({
-            projectName,
-            imgPath,
-            projectType,
-            projectTags
-        }));
+        const initialProjects = [...data];
 
         const sizeByProjectType = projects.reduce((acc, project) => {
             const type = project.projectType;
@@ -63,12 +58,7 @@ export default function MainPage() {
         if(type === 'All') {
             filteredProjects = projects;
         } else {
-            filteredProjects = data.filter(item => item.projectType === type).map(({ projectName, imgPath, projectType,projectTags }) => ({
-                projectName,
-                imgPath,
-                projectType,
-                projectTags,
-            }));
+            filteredProjects = [...data.filter(item => item.projectType === type)];
         }
 
         setCurrentShowProjIndex(0);
@@ -107,6 +97,7 @@ export default function MainPage() {
         imgPath: data[index].imgPath,
         projectType: data[index].projectType,
         projectTags: data[index].projectTags,
+        imgSlides: data[index].imgSlides,
     }));
 
     return(
@@ -122,7 +113,7 @@ export default function MainPage() {
                         backgroundSize: 'cover', 
                         backgroundPosition: 'center',
                     }}> 
-                        <div class="w-full h-full flex flex-col justify-center items-center backdrop-blur-md">
+                        <div className="w-full h-full flex flex-col justify-center items-center backdrop-blur-md">
                             <div className='flex text-white text-9xl font-sans font-bold tracking-widest'>
                                 XSECTORZ
                             </div>
@@ -243,7 +234,7 @@ export default function MainPage() {
                 </div>
             </div>
             <div className='flex h-[450px] w-full justify-center mt-5'>
-                <div className='flex h-[400px] w-[1200px] bg-black relative p-5'>
+                <div className='flex h-[400px] w-[1200px] relative p-5'>
                     
                     {/* Arrow */}
                     <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 left-5 text-3xl p-2 text-white'
@@ -282,7 +273,7 @@ export default function MainPage() {
                         backgroundSize: 'cover', 
                         backgroundPosition: 'center',
                     }}> 
-                        <div class="w-full h-[450px] flex flex-col justify-center items-center backdrop-blur-lg cursor-pointer"
+                        <div className="w-full h-[450px] flex flex-col justify-center items-center backdrop-blur-lg cursor-pointer"
                         onMouseEnter={() => setIsHoverSiamcraft(true)}
                         onMouseLeave={() => setIsHoverSiamcraft(false)}>
                             <div className={`flex flex-row text-2xl font-sans tracking-wider font-bold mt-4 ${!isHoverSiamcraft ? 'text-white' : 'text-[#FF0000]'}`}>
