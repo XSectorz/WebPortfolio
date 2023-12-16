@@ -15,7 +15,7 @@ const ProjectCard = ({ project }) => {
 
     return (
 
-        <div className={`rounded-lg shadow lg:mx-5 mx-20 ${isHovered ? 'cursor-pointer' : 'cursor-default'}`}
+        <div className={`rounded-lg shadow lg:mx-5 md:mx-9 mx-20 ${isHovered ? 'cursor-pointer' : 'cursor-default'}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>
             <Link to={{ pathname: `/projects/${project.projectName}` }}>

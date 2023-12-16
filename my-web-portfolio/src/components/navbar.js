@@ -24,7 +24,7 @@ export default function NavBar() {
                                 }, 200);
                             }}
                             to="/"
-                            className={`text-white items-center justify-center`}
+                            className={`bg-[#FF0000] text-white rounded-full border-spacing-x-10 items-center justify-center`}
                         >
                             <FaDev />
                         </Link>
@@ -38,7 +38,7 @@ export default function NavBar() {
                 <div className='md:hidden  bg-[#272727] text-white pt-2 sticky top-0'>
                     {
                         isOpen && (
-                            <div>
+                            <div className=''>
                                 <div className={`flex text-white'}`}>
                                     <Link
                                         onClick={() => {

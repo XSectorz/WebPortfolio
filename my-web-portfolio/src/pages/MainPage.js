@@ -27,6 +27,17 @@ export default function MainPage() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
+    useEffect(() => {
+        const handleResize = () => {
+          setCurrentShowProjIndex(0);
+          setProjectTranslateXValue(0);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
+
     const changeEducation = (index) => {
 
         if (educationIndex === index) {
@@ -320,15 +331,15 @@ export default function MainPage() {
                 <div className='flex h-[400px] lg:w-[1200px] w-full relative p-5'>
 
                     {/* Arrow */}
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 md:left-[-40px] text-3xl p-2 text-white'
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 lg:left-[-40px] text-3xl p-2 text-white'
                         onClick={() => handlePrevClick()} style={{ zIndex: 1 }}>
                         <FaChevronLeft />
                     </button>
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 md:right-[-40px] right-[20px] text-3xl p-2 text-white md:block hidden'
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 lg:right-[-40px] right-[20px] text-3xl p-2 text-white md:block hidden'
                         onClick={() => handleNextClick()} style={{ zIndex: 1 }}>
                         <FaChevronRight />
                     </button>
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 md:right-[-40px] right-[20px] text-3xl p-2 text-white md:hidden block'
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 lg:right-[-40px] right-[20px] text-3xl p-2 text-white md:hidden block'
                         onClick={() => handleNextClickSm()} style={{ zIndex: 1 }}>
                         <FaChevronRight />
                     </button>
@@ -416,7 +427,7 @@ export default function MainPage() {
                                     What's I Do?
                                 </div>
                             </div>
-                            <div className='flex flex-col text-gray-400 font-sans font-bold text-lg mt-5'>
+                            <div className='flex flex-col text-gray-400 font-sans font-bold lg:text-lg mt-5'>
                                 <div className='flex'>
                                     I am the developer of most of Siamcraft's systems and can support The number of simultaneous players can be greater than 300.
                                     <br /><br />
@@ -486,46 +497,45 @@ export default function MainPage() {
                 </div>
             </div>
             <div id='contact' className='flex flex-col h-full bg-black pt-20 justify-center items-center'>
-                <div className='flex flex-col w-[550px]'>
-                    <div className='flex text-white text-6xl justify-center font-sans font-bold w-full'>
+                <div className='flex flex-col md:w-[550px] w-full'>
+                    <div className='flex text-white lg:text-6xl text-5xl justify-center font-sans font-bold w-full'>
                         Contact Me
                     </div>
-                    <div className='flex items-center pt-10 font-sans text-lg font-semibold text-gray-400'>
+                    <div className='flex items-center pt-10 font-sans text-lg font-semibold text-gray-400 pl-4'>
                         Have a question or want to work together?<br /> Leave your details and I'll get back to you as soon as possible.
                     </div>
-                    <div className='flex flex-col pt-10'>
-                        <input
-                            className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
-                            type="text"
-                            placeholder="Name"
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </div>
-                    <div className='flex pt-2'>
-                        <input
-                            className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
-                            type="text"
-                            placeholder="Email"
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div className='flex pt-2'>
-                        <textarea
-                            className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
-                            type="text"
-                            placeholder="Message"
-                            style={{
-                                maxHeight: '140px',
-                                overflowY: 'auto',
-                                resize: 'none',
-                            }}
-                            onChange={(e) => setMessage(e.target.value)}
-                        />
-                    </div>
-                    <div className='flex flex-row justify-between pt-2 text-white'>
-                        <div className='flex'>
-
+                    <div className='flex flex-col px-4'>
+                        <div className='flex flex-col pt-10 pb-2'>
+                            <input
+                                className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
+                                type="text"
+                                placeholder="Name"
+                                onChange={(e) => setName(e.target.value)}
+                            />
                         </div>
+                        <div className='flex pt-2 pb-2'>
+                            <input
+                                className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
+                                type="text"
+                                placeholder="Email"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+                        <div className='flex pt-2 pb-2'>
+                            <textarea
+                                className="rounded px-3 bg-[#282828] border-transparent focus:border-none focus:border-transparent outline-none w-full text-white py-2"
+                                type="text"
+                                placeholder="Message"
+                                style={{
+                                    maxHeight: '140px',
+                                    overflowY: 'auto',
+                                    resize: 'none',
+                                }}
+                                onChange={(e) => setMessage(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div className='flex flex-row justify-end pt-2 text-white pr-4'>
                         <div className='flex font-sans text-lg font-bold border-b-4 border-[#ff4d5a] text-white hover:border-white items-center justify-center w-20 hover:text-[#ff4d5a] cursor-pointer hover:duration-300 duration-300'
                             onClick={sendEmail}>
                             SUBMIT
