@@ -179,7 +179,7 @@ export default function MainPage() {
                 <NavBar/> 
             </div>
             <div id='home'>
-                <div  className='items-center justify-center mt-32'>
+                <div  className='items-center justify-center md:mt-32'>
                     <div className='flex flex-col items-center h-[750px] justify-center'
                     style={{
                         backgroundImage: 'url(/img/BG2.jpg)', 
@@ -320,20 +320,20 @@ export default function MainPage() {
                 <div className='flex h-[400px] lg:w-[1200px] w-full relative p-5'>
                     
                     {/* Arrow */}
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 left-5 text-3xl p-2 text-white'
-                    style={{ zIndex: 2 }} onClick={() => handlePrevClick()}>
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 md:left-[-40px] text-3xl p-2 text-white'
+                     onClick={() => handlePrevClick()} style={{ zIndex: 1 }}>
                         <FaChevronLeft />
                     </button>
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 right-5 text-3xl p-2 text-white md:block hidden'
-                    style={{ zIndex: 2 }} onClick={() => handleNextClick()}>
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 md:right-[-40px] right-[20px] text-3xl p-2 text-white md:block hidden'
+                     onClick={() => handleNextClick()} style={{ zIndex: 1 }}>
                         <FaChevronRight />
                     </button>
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 right-5 text-3xl p-2 text-white md:hidden block'
-                    style={{ zIndex: 2 }} onClick={() => handleNextClickSm()}>
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 md:right-[-40px] right-[20px] text-3xl p-2 text-white md:hidden block'
+                     onClick={() => handleNextClickSm()} style={{ zIndex: 1 }}>
                         <FaChevronRight />
                     </button>
                     <div className='md:flex hidden overflow-hidden'>
-                        <div className={`flex w-full h-full bg-black py-5 overflow-hidden pl-5 ${filteredProjects.length < 4 ? 'justify-center' : 'justify-start'}`} style={{ zIndex: 1 }}>
+                        <div className={`flex w-full h-full bg-black py-5 overflow-hidden pl-5 ${filteredProjects.length < 4 ? 'justify-center' : 'justify-start'}`}>
                             {filteredProjects.map((project, index) => (
                                 <div
                                 key={index}
@@ -349,7 +349,7 @@ export default function MainPage() {
                         </div>
                     </div>
                     <div className='flex md:hidden overflow-hidden'>
-                        <div className={`flex w-full h-full bg-black py-5 overflow-hidden justify-start`} style={{ zIndex: 1 }}>
+                        <div className={`flex w-full h-full bg-black py-5 overflow-hidden justify-start`}>
                             {filteredProjects.map((project, index) => (
                                 <div
                                 key={index}
