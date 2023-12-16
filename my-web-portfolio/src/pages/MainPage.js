@@ -158,6 +158,13 @@ export default function MainPage() {
         }
       };
 
+      const handleNextClickSm = () => {
+        if(currentShowProjIndex+1 < filteredProjects.length){
+            setProjectTranslateXValue((projectTranslateXValue) => projectTranslateXValue - 100);
+            setCurrentShowProjIndex(currentShowProjIndex+1);
+        }
+      };
+
     const projects = Array.from({ length: data.length }).map((_, index) => ({
         projectName: data[index].projectName,
         imgPath: data[index].imgPath,
@@ -199,131 +206,163 @@ export default function MainPage() {
                 </div>
             </div>
             <div id='education' className='flex flex-col items-center justify-center mx-32'>
-                <div className='flex flex-col mt-20'>
-                    <div className='flex justify-center text-white text-6xl font-sans font-bold'>
+                <div className='flex flex-col mt-20 lg:w-[700px] w-96'>
+                    <div className='flex justify-center text-white lg:text-6xl text-5xl font-sans font-bold'>
                         Education
                     </div>
                     <div className='flex flex-col mt-20'>
-                    <div className={`flex w-[700px] h-[55px] rounded-lg justify-between duration-500 ${educationIndex===1 ? 'bg-[#CE1212]' : 'bg-[#810000]'}`}
+                    <div className={`flex h-[55px] rounded-lg justify-center lg:justify-between duration-500 ${educationIndex===1 ? 'bg-[#CE1212]' : 'bg-[#810000]'}`}
                         onClick={() => changeEducation(1)}>
-                            <div className='flex items-center w-[620px] justify-between'>
-                                <div className='flex mx-5 text-white text-lg font-sans font-bold'>
+                            <div className='flex items-center lg:w-[620px] w-[500px] lg:justify-between justify-center'>
+                                <div className='flex lg:mx-5 text-white lg:text-lg w-full font-sans font-bold lg:justify-start justify-center'>
                                     Bachelor's degree @ KMITL 
                                 </div>
-                                <div className='flex ml-52 text-white text-lg font-sans font-bold'>
+                                <div className=' text-white text-lg lg:flex hidden font-sans font-bold w-full justify-end'>
                                     2021 - PRESENT
                                 </div>
                             </div>
-                            <button className='flex text-white items-center font-sans text-2xl mr-6 '>
+                            <button className='relative lg:flex hidden text-white items-center font-sans text-2xl mr-6 '>
                                 {educationIndex === 1 ? '-' : '+'}
                             </button>
                         </div>
                         <div className={`flex flex-row ${educationIndex===1 ? ' h-72 transition-all' : ' h-0 transition-all'} overflow-hidden duration-700`}>
                             <EducationInfo position="Bangkok, Thailand" website="www.kmitl.ac.th" description={
                                     <>
-                                    In my studies there, I worked on IOT projects such as FPGA, STM32, and
-                                    Arduino. Website projects included product auction websites, sales
-                                    websites, as well as developing games using SFML, <br />Godot Engine.
+                                    I worked on IOT projects such as FPGA, STM32, and Arduino. Website projects included product auction websites, sales
+                                    websites, as well as developing games using SFML, Godot Engine.
                                     <br />
                                     <strong>GPA 3.41</strong>
                                 </>
                             }
-                            information="Computer Engineering" imgPath="/img/logokmitl.png" imgAlt="kmitlimg"/>
+                            information="Computer Engineering" imgPath="/img/logokmitl.png" imgAlt="kmitlimg" typeInfo="KMITL"/>
                         </div>
                     </div>
                     <div className='flex flex-col mt-6'>
-                        <div className={`flex w-[700px] h-[55px] rounded-lg justify-between duration-500 ${educationIndex===2 ? 'bg-[#CE1212]' : 'bg-[#810000]'}`}
+                        <div className={`flex h-[55px] rounded-lg justify-between duration-500 ${educationIndex===2 ? 'bg-[#CE1212]' : 'bg-[#810000]'}`}
                         onClick={() => changeEducation(2)}>
-                            <div className='flex items-center  w-[620px] justify-between'>
-                                <div className='flex mx-5 text-white text-lg font-sans font-bold'>
+                            <div className='flex items-center lg:w-[620px] w-[500px] lg:justify-between justify-center'>
+                                <div className='flex lg:mx-5 text-white lg:text-lg w-full font-sans font-bold lg:justify-start justify-center'>
                                     High School @ Singburi School  
                                 </div>
-                                <div className='flex ml-52 text-white text-lg font-sans font-bold'>
+                                <div className=' text-white text-lg lg:flex hidden font-sans font-bold w-full justify-end'>
                                     2018 - 2021 
                                 </div>
                             </div>
-                            <button className='flex text-white items-center font-sans text-2xl mr-6 '>
+                            <button className='relative lg:flex hidden text-white items-center font-sans text-2xl mr-6 '>
                                 {educationIndex === 2 ? '-' : '+'}
                             </button>
                         </div>
                         <div className={`flex flex-row ${educationIndex===2 ? ' h-60 transition-all' : ' h-0 transition-all'} overflow-hidden duration-700`}>
                             <EducationInfo position="Singburi, Thailand" website="sing.ac.th" description="During my studies, I developed a project on maintaining a straw mushroom farm using Arduino and competed in various programming competitions."
-                            information="Sciences - Mathmatics Program" imgPath="/img/logoschool.png" imgAlt="schoolimg"/>
+                            information="Sciences - Mathmatics Program" imgPath="/img/logoschool.png" imgAlt="schoolimg" typeInfo="Singburi"/>
                         </div>
                     </div>
                 </div>
             </div>
             <div id='projects' className='flex flex-col h-full'>
-                <div className='flex flex-row mt-20'>
-                    <div className='flex flex-col w-4/6 mr'>
-                        <div className='text-white font-san ml-[350px] font-bold text-8xl mr-[100px] '>
-                            My<br/> Projects
-                        </div>
-                        <div className='text-white font-sans ml-[350px] font-bold text-md mt-10 pl-1 mr-[100px]'>
-                            bla bla bla... bla bla bla... bla bla bla... bla bla bla... bla bla bla... bla bla bla... bla bla bla... bla bla bla...
-                            bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla...
-                            bla bla bla...bla bla bla...
-                            bla bla bla...bla bla bla...bla bla bla... ปิ่นจัง
-                        </div>
-                    </div>
-                    <div className='flex w-2/6 h-[450px] text-white items-center justify-start mr-28 overflow-hidden'>
-                        <img className='w-[500px]' src="/img/gibiseeproject.png" alt="gibi"></img>
-                    </div>
+                <div className='flex text-white font-san font-bold lg:text-6xl text-5xl justify-center mt-20'>
+                    My Projects
                 </div>
-                <div className='flex flex-row mt-10'>
-                    <div className='flex text-gray-500 font-sans font-bold text-base ml-[350px]'>
+                <div className='flex flex-row mt-10 justify-center'>
+                    <div className='flex text-gray-500 font-sans font-bold text-base'>
                         Filter by
                     </div>
                     <div className={`relative flex font-sans font-bold text-base ml-4 ${[projectFilter !== 'All' ? 'cursor-pointer text-gray-500' : 'cursor-default text-[#CE1212]']}`} 
                     onClick={() => clickChangeProjectFilter("All")}>
-                        <div className={`absolute top-[-8px] right-[-12px] font-sans font text-xs`}>{returnNumberFormat(projects.length)}</div>
-                        All
+                        <div className='md:flex hidden'>
+                            <div className={`absolute top-[-8px] right-[-12px] font-sans font text-xs`}>{returnNumberFormat(projects.length)}</div>
+                            All
+                        </div>
+                        <div className='flex md:hidden'>
+                            <div className={`absolute top-[-8px] right-[-12px] font-sans font text-xs`}>{returnNumberFormat(projects.length)}</div>
+                            All
+                        </div>
                     </div>
                     <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
                     <div className={`relative flex font-sans font-bold text-base ml-4 ${[projectFilter !== 'Game Development' ? 'cursor-pointer text-gray-500' : 'cursor-default text-[#CE1212]']}`}
                     onClick={() => clickChangeProjectFilter("Game Development")}>
-                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["Game Development"])}</div>
-                        Game Development
+                        <div className='md:flex hidden'>
+                            <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["Game Development"])}</div>
+                            Game Development
+                        </div>
+                        <div className='flex md:hidden'>
+                            <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["Game Development"])}</div>
+                            Game
+                        </div>
                     </div>
                     <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
                     <div className={`relative flex font-sans font-bold text-base ml-4 ${[projectFilter !== "Web Development" ? 'cursor-pointer text-gray-500' : 'cursor-default text-[#CE1212]']}`}
                     onClick={() => clickChangeProjectFilter("Web Development")}>
-                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["Web Development"])}</div>
-                        Web Development
+                        <div className='md:flex hidden'>
+                            <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["Web Development"])}</div>
+                            Web Development
+                        </div>
+                        <div className='flex md:hidden'>
+                            <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["Web Development"])}</div>
+                            Web
+                        </div>
                     </div>
                     <div className='text-gray-500 font-sans text-base ml-4 font-bold'> / </div>
                     <div className={`relative flexfont-sans font-bold text-base ml-4 ${[projectFilter !== "App Development" ? 'cursor-pointer text-gray-500' : 'cursor-default text-[#CE1212]']}`}
                     onClick={() => clickChangeProjectFilter("App Development")}>
-                        <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["App Development"])}</div>
-                        App Development
+                        <div className='md:flex hidden'>
+                            <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["App Development"])}</div>
+                            App Development
+                        </div>
+                        <div className='flex md:hidden'>
+                            <div className='absolute top-[-8px] right-[-12px] font-sans font text-xs'>{returnNumberFormat(filteredProjectsSize["App Development"])}</div>
+                            App
+                        </div>
                     </div>
                 </div>
             </div>
             <div className='flex h-[450px] w-full justify-center mt-5'>
-                <div className='flex h-[400px] w-[1200px] relative p-5'>
+                <div className='flex h-[400px] lg:w-[1200px] w-full relative p-5'>
                     
                     {/* Arrow */}
                     <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 left-5 text-3xl p-2 text-white'
                     style={{ zIndex: 2 }} onClick={() => handlePrevClick()}>
                         <FaChevronLeft />
                     </button>
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 right-5 text-3xl p-2 text-white'
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 right-5 text-3xl p-2 text-white md:block hidden'
                     style={{ zIndex: 2 }} onClick={() => handleNextClick()}>
                         <FaChevronRight />
                     </button>
-                    <div className={`flex w-full h-full bg-black py-5 overflow-hidden pl-5 ${filteredProjects.length < 4 ? 'justify-center' : 'justify-start'}`} style={{ zIndex: 1 }}>
-                        {filteredProjects.map((project, index) => (
-                            <div
-                            key={index}
-                            className='project-card'
-                            style={{
-                                transition: 'transform 0.3s ease-in-out',
-                                transform: `translateX(${projectTranslateXValue}%)`
-                            }}
-                            >
-                            <ProjectCard key={project.projectName} {...project} project={project} />
-                            </div>
-                        ))}
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 right-5 text-3xl p-2 text-white md:hidden block'
+                    style={{ zIndex: 2 }} onClick={() => handleNextClickSm()}>
+                        <FaChevronRight />
+                    </button>
+                    <div className='md:flex hidden overflow-hidden'>
+                        <div className={`flex w-full h-full bg-black py-5 overflow-hidden pl-5 ${filteredProjects.length < 4 ? 'justify-center' : 'justify-start'}`} style={{ zIndex: 1 }}>
+                            {filteredProjects.map((project, index) => (
+                                <div
+                                key={index}
+                                className='project-card'
+                                style={{
+                                    transition: 'transform 0.3s ease-in-out',
+                                    transform: `translateX(${projectTranslateXValue}%)`
+                                }}
+                                >
+                                <ProjectCard key={project.projectName} {...project} project={project} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className='flex md:hidden overflow-hidden'>
+                        <div className={`flex w-full h-full bg-black py-5 overflow-hidden justify-start`} style={{ zIndex: 1 }}>
+                            {filteredProjects.map((project, index) => (
+                                <div
+                                key={index}
+                                className='project-card'
+                                style={{
+                                    transition: 'transform 0.3s ease-in-out',
+                                    transform: `translateX(${projectTranslateXValue}%)`
+                                }}
+                                >
+                                <ProjectCard key={project.projectName} {...project} project={project} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

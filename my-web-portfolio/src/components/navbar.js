@@ -16,8 +16,18 @@ export default function NavBar() {
         <div className='flex bg-[#272727] w-full' style={{ zIndex: 2 }}>
             <div className='flex flex-col justify-center lg:py-2 w-full'>
                 <div className='flex flex-row justify-between md:hidden mt-2'>
-                    <div className='flex text-5xl font-sans font-bold text-white items-center justify-center ml-5'>
-                        <FaDev />
+                    <div className='flex text-5xl font-sans font-bold ml-5 cursor-pointer'>
+                        <Link
+                            onClick={() => {
+                                setTimeout(() => {
+                                    scroller.scrollTo("home", { smooth: true, duration: 1600 });
+                                }, 200);
+                            }}
+                            to="/"
+                            className={`text-white items-center justify-center`}
+                        >
+                            <FaDev />
+                        </Link>
                     </div>
                     <div className='flex mt-2 cursor-pointer w-10 h-10 text-white mr-5 ' onClick={() => setIsOpen(!isOpen)}>
                         {
