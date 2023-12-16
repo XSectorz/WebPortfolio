@@ -180,7 +180,7 @@ export default function MainPage() {
                         backgroundPosition: 'center',
                     }}> 
                         <div className="w-full h-full flex flex-col justify-center items-center backdrop-blur-md">
-                            <div className='flex text-white text-9xl font-sans font-bold tracking-widest'>
+                            <div className='flex text-white lg:text-9xl md:text-6xl text-5xl font-sans font-bold tracking-widest'>
                                 XSECTORZ
                             </div>
                             <div className='flex text-white text-2xl font-sans tracking-wider mt-4'>
@@ -190,7 +190,7 @@ export default function MainPage() {
                                 to="contact"
                                 smooth={true}
                                 duration={2000}
-                                className={`cursor-pointer mt-16 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-2xl font-semibold hover:text-white py-3 px-14 border border-[#FF0000] hover:border-transparent rounded`}
+                                className={`cursor-pointer mt-16 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-2xl font-semibold hover:text-white py-3 md:px-14 px-6 border border-[#FF0000] hover:border-transparent rounded`}
                             >
                                 CONTACT
                             </ScrollLink>
