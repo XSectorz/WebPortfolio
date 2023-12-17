@@ -331,15 +331,15 @@ export default function MainPage() {
                 <div className='flex h-[400px] lg:w-[1200px] w-full relative p-5'>
 
                     {/* Arrow */}
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 lg:left-[-40px] text-3xl p-2 text-white'
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 text-3xl p-2 text-white'
                         onClick={() => handlePrevClick()} style={{ zIndex: 1 }}>
                         <FaChevronLeft />
                     </button>
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 lg:right-[-40px] right-[20px] text-3xl p-2 text-white md:block hidden'
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 right-[20px] text-3xl p-2 text-white md:block hidden'
                         onClick={() => handleNextClick()} style={{ zIndex: 1 }}>
                         <FaChevronRight />
                     </button>
-                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 lg:right-[-40px] right-[20px] text-3xl p-2 text-white md:hidden block'
+                    <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 right-[20px] text-3xl p-2 text-white md:hidden block'
                         onClick={() => handleNextClickSm()} style={{ zIndex: 1 }}>
                         <FaChevronRight />
                     </button>
