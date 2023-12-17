@@ -4,6 +4,9 @@ import NavBar from "../components/navbar";
 import data from "../data/projectListData";
 import TypeItems from "../components/typeItems";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
+import BottomNavBar from "../components/bottomNavBar";
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function ProjectDetails() {
     const navigate = useNavigate();
@@ -23,7 +26,7 @@ export default function ProjectDetails() {
         // console.log("Loc " ,location);
         // console.log("ProjName ", projectName);
         window.scrollTo(0, 0);
-        
+
         if (!isValid) {
             navigate('/PageNotFound');
         } else {
@@ -64,7 +67,7 @@ export default function ProjectDetails() {
             <div className='flex bg-[#272727] w-full fixed items-center justify-center' style={{ zIndex: 2 }}>
                 <NavBar />
             </div>
-            <div className="flex flex-col ml-64 mt-36 justify-start">
+            <div id='projectmain' className="flex flex-col md:ml-64 ml-4 mt-36 justify-start">
                 <div className="flex flex-row text-[#c5c5b6]">
                     <div className="flex text-md font-sans font-bold">
                         Home
@@ -94,23 +97,23 @@ export default function ProjectDetails() {
                         ))
                     }
                 </div>
-                <div className="flex flex-row mt-12 h-full w-full">
-                    <div className='flex h-full w-1/3 items-start'>
-                        <div className='flex h-[450px] w-[600px] rounded-3xl mx-2'
+                <div className="flex md:flex-row flex-col mt-12 h-full w-full md:ml-16">
+                    <div className='flex h-full md:w-1/3 w-full items-start'>
+                        <div className='flex md:h-[450px] h-[350px] w-[600px] md:rounded-3xl md:mx-2 mr-4 mb-4'
                             style={{
                                 backgroundImage: 'url(/img/siam_6.jpg)',
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
                             }} />
                     </div>
-                    <div className='flex w-5/12 text-white font-sans font-semibold text-lg ml-16'>
+                    <div className='flex md:w-5/12 text-white font-sans font-semibold text-lg mr-4'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque congue ex diam, nec elementum tellus porta et. In hac habitasse platea dictumst. Praesent a consectetur nulla. Curabitur mattis ipsum felis, non suscipit nunc pretium in. Integer id orci non ex interdum consequat in tincidunt dolor. Aenean ante ante, iaculis at vehicula vel, porta sit amet nibh. Aliquam in odio ornare, convallis lorem id, lacinia metus.
 
                         Quisque tincidunt ex vehicula risus rutrum, nec imperdiet magna sollicitudin. Donec faucibus fringilla vssim sed eros id, varius dignissim nibh. Phasellus porta, quam non auctor vestibulum, leo ex condimentum ligula, nec sodales diam odio eget est. Proin a lectus lobortis, mollis magna sed, luctus mauris. Nulla est dui, ornare sit amet nisi a, consectetur laoreet orci. Fusce tempor viverra lorem at pretium.
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center items-center">
+            <div className="md:flex hidden justify-center items-center">
                 <div className='flex h-[450px] w-[1820px] relative p-5 mt-20'>
                     {/* Arrow */}
                     <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 left-5 text-3xl p-2 text-white bg-[#252525] rounded-full bg-opacity-80'
@@ -140,6 +143,30 @@ export default function ProjectDetails() {
                             </div>
                         ))}
                     </div>
+                </div>
+            </div>
+            <div className="md:hidden flex flex-col h-full w-full mt-10">
+                {matchingProject.imgSlides.split(",").map((imgProj, index) => (
+                    <div key={index}
+                        className="flex h-[350px] mx-4 my-3"
+                        style={{
+                            backgroundImage: `url(/img/${imgProj})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }} />
+                ))}
+            </div>
+            <div className=' relative flex flex-col h-40 bg-[#282828] mt-20 justify-center items-center w-full'>
+                <ScrollLink
+                    to="projectmain"
+                    smooth={true}
+                    duration={2000}
+                    className={`absolute flex text-white text-4xl top-[-20px] bg-[#ff4d5a] animate-bounce-on-hover-v2 cursor-pointer`}
+                >
+                    <MdOutlineKeyboardDoubleArrowUp />
+                </ScrollLink>
+                <div className='flex'>
+                    <BottomNavBar />
                 </div>
             </div>
         </div>
