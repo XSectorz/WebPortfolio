@@ -27,7 +27,7 @@ const ProjectCard = ({ project }) => {
                         {project.projectName}
                     </div>
                     <div className="flex text-white font-sans h-20">
-                        desc....
+                        {project.projectSimpleDesc}
                     </div>
                     <div className={`flex text-gray-400 font-sans font-bold items-center justify-center ${isHovered ? 'custom-fade-in-up' : 'custom-fade-in-down'}`} >
                         {isHovered ? 'Show project' : project.projectType}

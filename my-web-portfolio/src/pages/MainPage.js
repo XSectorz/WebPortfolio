@@ -182,6 +182,11 @@ export default function MainPage() {
         projectType: data[index].projectType,
         projectTags: data[index].projectTags,
         imgSlides: data[index].imgSlides,
+        pageImg: data[index].pageImg,
+        projectSimpleDesc: data[index].projectSimpleDesc,
+        projectFullDesc: data[index].projectFullDesc,
+        imgSlides: data[index].imgSlides,
+        projectGithub: data[index].projectGithub
     }));
 
     return (
