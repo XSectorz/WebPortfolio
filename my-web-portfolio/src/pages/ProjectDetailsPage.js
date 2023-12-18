@@ -58,7 +58,12 @@ export default function ProjectDetails() {
     };
 
     const handleNextClick = () => {
-        if (currentShowProjIndex + 4 < matchingProject.imgSlides.split(",").length) {
+
+        if(matchingProject.imgSlides.split(",").length <= 4) {
+            return;
+        }
+
+        if (currentShowProjIndex < Math.floor(matchingProject.imgSlides.split(",").length/2)) {
             setProjectTranslateXValue((projectTranslateXValue) => projectTranslateXValue - 100);
             setCurrentShowProjIndex(currentShowProjIndex + 1);
         }
@@ -74,7 +79,7 @@ export default function ProjectDetails() {
             <div className='flex bg-[#272727] w-full fixed items-center justify-center' style={{ zIndex: 2 }}>
                 <NavBar />
             </div>
-            <div id="projectmain" className="flex flex-col md:ml-64 ml-4 mt-36 justify-start">
+            <div id="projectmain" className="flex flex-col mt-36 justify-start lg:px-10 px-4">
                 <div className="flex flex-row text-[#c5c5b6]">
                     <div className="flex text-md font-sans font-bold">
                         Home
@@ -104,20 +109,18 @@ export default function ProjectDetails() {
                         ))
                     }
                 </div>
-                <div className="flex md:flex-row flex-col mt-12 h-full w-full">
-                    <div className='flex h-full md:w-1/3 w-full items-start'>
-                        <div className='flex md:h-[450px] h-[350px] w-[600px] md:rounded-3xl md:mx-2 sm:mr-4'>
-                            <img src={`/img/${matchingProject.pageImg}`} className="object-fill rounded-2xl w-full h-full"/>
+                <div className="flex lg:flex-row flex-col mt-12 h-full w-full">
+                    <div className='flex h-full lg:w-2/3 w-full items-start'>
+                        <div className='flex lg:h-[450px] h-[350px] w-full md:rounded-3xl md:mx-2 sm:mr-4'>
+                            <img src={`/img/${matchingProject.pageImg}`} className="lg:object-fill object-contain rounded-2xl w-full h-full"/>
                         </div>
                     </div>
-                    <div className="flex w-full h-full flex-col mr-4 md:ml-20 mt-5">
-                        <div className='flex md:h-[400px] h-full text-white font-sans font-semibold md:text-xl text-base mr-4 break-words'>
+                    <div className="flex w-full h-full flex-col mr-4 mt-5 px-4">
+                        <div className='flex lg:h-[400px] h-full text-white font-sans font-semibold lg:text-xl text-base mr-4 break-words'>
                             {matchingProject.projectFullDesc}
                         </div>
-                        <div className={`md:flex hidden mt-4 cursor-pointer font-bold py-2 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-base hover:text-white md:px-8 px-6 border border-[#FF0000] hover:border-transparent rounded`}
-                        style={{
-                            width: `15%`
-                        }} onClick={openGithubProjects}>
+                        <div className={`flex lg:w-1/6 w-1/5 justify-center items-center mt-4 cursor-pointer font-bold py-2 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-base hover:text-white md:px-8 px-6 border border-[#FF0000] hover:border-transparent rounded`}
+                         onClick={openGithubProjects}>
                             <div className="flex flex-row">
                                 <div className="flex">
                                     Github
@@ -128,24 +131,11 @@ export default function ProjectDetails() {
                                 
                             </div> 
                         </div>
-                        <div className={`md:hidden flex cursor-pointer mt-4 font-bold py-2 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-base hover:text-white md:px-8 px-6 border border-[#FF0000] hover:border-transparent rounded`}
-                        style={{
-                            width: `30%`
-                        }} onClick={openGithubProjects}>
-                            <div className="flex flex-row">
-                                <div className="flex">
-                                    Github
-                                </div>
-                                <div className="flex ml-4 justify-center items-center font-bold">
-                                    <FaArrowRightLong />
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <div className="md:flex hidden justify-center items-center">
-                <div className='flex h-[450px] w-[1820px] relative p-5 mt-20'>
+            <div className="lg:flex hidden justify-center items-center">
+                <div className='flex h-[450px] w-full relative p-5 mt-20'>
                     {/* Arrow */}
                     <button className=' absolute top-[50%] -translate-x-0 -translate-y-1/2 left-5 text-3xl p-2 text-white bg-[#252525] rounded-full bg-opacity-80'
                         style={{ zIndex: 2 }} onClick={() => handlePrevClick()}>
@@ -165,15 +155,15 @@ export default function ProjectDetails() {
                                     transform: `translateX(${projectTranslateXValue}%)`
                                 }}
                             >
-                                <div className="flex h-full w-[400px] rounded-2xl mx-3" >
-                                    <img src={`/img/${imgProj}`} className=" object-contain rounded-2xl w-full h-full rounded-xl"/>
+                                <div className="flex h-full w-[400px] rounded-2xl mx-10" >
+                                    <img src={`/img/${imgProj}`} className=" object-contain rounded-2xl w-full h-full"/>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
-            <div className="md:hidden flex flex-col h-full w-full mt-10">
+            <div className="lg:hidden flex flex-col h-full w-full mt-10">
                 {matchingProject.imgSlides.split(",").map((imgProj, index) => (
                     <div key={index}
                         className="flex h-full mx-4 my-3"
