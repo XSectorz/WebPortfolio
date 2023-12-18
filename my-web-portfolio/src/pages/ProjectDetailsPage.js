@@ -106,21 +106,18 @@ export default function ProjectDetails() {
                 </div>
                 <div className="flex md:flex-row flex-col mt-12 h-full w-full">
                     <div className='flex h-full md:w-1/3 w-full items-start'>
-                        <div className='flex md:h-[450px] h-[350px] w-[600px] md:rounded-3xl md:mx-2 mr-4'
-                            style={{
-                                backgroundImage: `url(/img/${matchingProject.pageImg})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                            }} />
+                        <div className='flex md:h-[450px] h-[350px] w-[600px] md:rounded-3xl md:mx-2 sm:mr-4'>
+                            <img src={`/img/${matchingProject.pageImg}`} className="object-fill rounded-2xl w-full h-full"/>
+                        </div>
                     </div>
-                    <div className="flex w-full h-full flex-col mr-4 md:ml-20" onClick={openGithubProjects}>
-                        <div className='flex md:h-[400px] h-full text-white font-sans font-semibold text-lg mr-4 break-all'>
+                    <div className="flex w-full h-full flex-col mr-4 md:ml-20 mt-5">
+                        <div className='flex md:h-[400px] h-full text-white font-sans font-semibold md:text-xl text-base mr-4 break-words'>
                             {matchingProject.projectFullDesc}
                         </div>
                         <div className={`md:flex hidden mt-4 cursor-pointer font-bold py-2 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-base hover:text-white md:px-8 px-6 border border-[#FF0000] hover:border-transparent rounded`}
                         style={{
                             width: `15%`
-                        }}>
+                        }} onClick={openGithubProjects}>
                             <div className="flex flex-row">
                                 <div className="flex">
                                     Github
@@ -128,12 +125,13 @@ export default function ProjectDetails() {
                                 <div className="flex ml-4 justify-center items-center font-bold">
                                     <FaArrowRightLong />
                                 </div>
-                            </div>
+                                
+                            </div> 
                         </div>
                         <div className={`md:hidden flex cursor-pointer mt-4 font-bold py-2 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-base hover:text-white md:px-8 px-6 border border-[#FF0000] hover:border-transparent rounded`}
                         style={{
                             width: `30%`
-                        }}>
+                        }} onClick={openGithubProjects}>
                             <div className="flex flex-row">
                                 <div className="flex">
                                     Github
@@ -168,7 +166,7 @@ export default function ProjectDetails() {
                                 }}
                             >
                                 <div className="flex h-full w-[400px] rounded-2xl mx-3" >
-                                    <img src={`/img/${imgProj}`} className="object-fill rounded-2xl"/>
+                                    <img src={`/img/${imgProj}`} className="object-fill rounded-2xl w-full h-full"/>
                                 </div>
                             </div>
                         ))}
@@ -180,7 +178,7 @@ export default function ProjectDetails() {
                     <div key={index}
                         className="flex h-[350px] mx-4 my-3"
                          >
-                        <img src={`/img/${imgProj}`} className="object-fill"/>
+                        <img src={`/img/${imgProj}`} className="object-fill w-full h-full"/>
                     </div>
                 ))}
             </div>
