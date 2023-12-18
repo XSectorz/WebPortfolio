@@ -166,7 +166,7 @@ export default function ProjectDetails() {
                                 }}
                             >
                                 <div className="flex h-full w-[400px] rounded-2xl mx-3" >
-                                    <img src={`/img/${imgProj}`} className="object-fill rounded-2xl w-full h-full"/>
+                                    <img src={`/img/${imgProj}`} className=" object-contain rounded-2xl w-full h-full rounded-xl"/>
                                 </div>
                             </div>
                         ))}
@@ -176,9 +176,9 @@ export default function ProjectDetails() {
             <div className="md:hidden flex flex-col h-full w-full mt-10">
                 {matchingProject.imgSlides.split(",").map((imgProj, index) => (
                     <div key={index}
-                        className="flex h-[350px] mx-4 my-3"
+                        className="flex h-full mx-4 my-3"
                          >
-                        <img src={`/img/${imgProj}`} className="object-fill w-full h-full"/>
+                        <img src={`/img/${imgProj}`} className="object-contain w-full h-full"/>
                     </div>
                 ))}
             </div>
