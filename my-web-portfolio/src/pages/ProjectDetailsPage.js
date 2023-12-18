@@ -119,7 +119,7 @@ export default function ProjectDetails() {
                         <div className='flex lg:h-[400px] h-full text-white font-sans font-semibold lg:text-xl text-base mr-4 break-words'>
                             {matchingProject.projectFullDesc}
                         </div>
-                        <div className={`flex lg:w-1/6 w-1/5 justify-center items-center mt-4 cursor-pointer font-bold py-2 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-base hover:text-white md:px-8 px-6 border border-[#FF0000] hover:border-transparent rounded`}
+                        <div className={`flex lg:w-1/6 w-1/4 justify-center items-center mt-4 cursor-pointer font-bold py-2 bg-transparent duration-500 hover:bg-[#FF0000] text-[#FF0000] text-base hover:text-white md:px-8 px-6 border border-[#FF0000] hover:border-transparent rounded`}
                          onClick={openGithubProjects}>
                             <div className="flex flex-row">
                                 <div className="flex">
